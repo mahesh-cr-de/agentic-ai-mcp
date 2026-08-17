@@ -1,0 +1,45 @@
+# Example configuration exercising every backend and guardrail knob.
+# Secrets are always referenced, never inlined — see docs/SECURITY.md.
+
+server:
+  name: mcp-data-tools-prod
+  log_level: INFO
+  instructions: >
+    Governed data-platform tools for the analytics team's agent fleet.
+    Every call is dry-run estimated, allow-list checked, and audited.
+  enabled_tools: []  # empty = all tools implemented by the configured backends
+
+audit:
+  kind: local_jsonl
+  path: /var/log/mcp-data-tools/audit-log.jsonl
+  fail_closed: true
+
+guardrails:
+  read_only: true
+  require_dry_run: true
+  max_bytes_billed: 5000000000       # 5 GB per query
+  max_rows_returned: 5000
+  allowed_table_patterns:
+    - "acme-prod.analytics_gold.customer_*"
+    - "acme-prod.analytics_gold.orders"
+  allowed_bucket_patterns:
+    - "acme-prod-raw-landing"
+  allowed_dag_patterns:
+    - "ingest_*"
+    - "reconcile_*"
+
+bigquery:
+  project_id: acme-prod
+  location: US
+  # credentials omitted -> falls back to Application Default Credentials
+
+gcs:
+  project_id: acme-prod
+
+airflow:
+  base_url: "https://composer.internal.acme.example.com"
+  auth_token:
+    source: env
+    key: AIRFLOW_TOKEN
+  timeout_seconds: 15
+  verify_tls: true

@@ -1,0 +1,23 @@
+services:
+  mcp-data-tools:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mcp-data-tools:local
+    container_name: mcp-data-tools
+    # MCP's stdio transport requires an attached, interactive stdin/stdout —
+    # this container is meant to be attached to by an MCP client host
+    # (e.g. `docker compose run --rm mcp-data-tools`), not left running
+    # detached.
+    stdin_open: true
+    tty: true
+    environment:
+      - AIRFLOW_TOKEN=${AIRFLOW_TOKEN:-}
+      - GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS:-}
+    volumes:
+      - ./configs:/etc/mcp-data-tools:ro
+      - audit-log:/var/log/mcp-data-tools
+    command: ["serve", "--config", "/etc/mcp-data-tools/default.yaml"]
+
+volumes:
+  audit-log:

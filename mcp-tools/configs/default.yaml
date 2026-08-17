@@ -1,0 +1,23 @@
+# Minimal, safe-by-default configuration.
+#
+# With no `bigquery`, `gcs`, or `airflow` sections, the server starts with
+# zero tools registered — a deliberately inert default so a misconfigured
+# deployment fails closed (no tools) rather than open (unrestricted tools).
+# Copy configs/full-example.yaml as a starting point for a real deployment.
+
+server:
+  name: mcp-data-tools
+  log_level: INFO
+
+audit:
+  kind: stdout
+  fail_closed: true
+
+guardrails:
+  read_only: true
+  require_dry_run: true
+  max_bytes_billed: 10000000000   # 10 GB
+  max_rows_returned: 10000
+  allowed_table_patterns: []
+  allowed_bucket_patterns: []
+  allowed_dag_patterns: []
