@@ -77,7 +77,7 @@ flowchart TB
 
 ## Request sequence: a guarded BigQuery query
 
-The two-phase guardrail check (see `docs/SECURITY.md` for the full
+The two-phase guardrail check (see [`SECURITY.md`](../SECURITY.md) for the full
 rationale) is the central design decision in this codebase, so it's worth
 tracing end to end.
 
@@ -132,7 +132,7 @@ Dependencies only point downward in this table — `guardrails` never
 imports from `tools`, `adapters` never import from `guardrails` or
 `tools`, etc. This is enforced by convention and code review today (see
 `CONTRIBUTING.md`); a future enhancement is an import-linter rule in CI
-(see `docs/ROADMAP` in the README).
+(see the "Roadmap" section of [`README.md`](../README.md)).
 
 ## Design decisions and trade-offs
 

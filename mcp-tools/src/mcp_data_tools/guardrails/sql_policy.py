@@ -8,7 +8,7 @@ Important:
     additionally run queries under a service account/role that only has
     read (``roles/bigquery.dataViewer``-equivalent) permissions on the
     allow-listed tables, so that even a guard bypass cannot mutate data.
-    See ``docs/SECURITY.md`` for the full defense-in-depth discussion.
+    See ``SECURITY.md`` for the full defense-in-depth discussion.
 """
 
 from __future__ import annotations

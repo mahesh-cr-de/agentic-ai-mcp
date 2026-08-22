@@ -129,7 +129,7 @@ class AuditConfig(BaseModel):
         table: Fully-qualified ``project.dataset.table`` for ``bigquery``.
         fail_closed: If ``True`` (default), a tool call is rejected when
             the audit event cannot be written, so no ungoverned action is
-            ever silently unlogged. See ``docs/SECURITY.md``.
+            ever silently unlogged. See ``SECURITY.md``.
     """
 
     kind: str = AuditSinkKind.LOCAL_JSONL

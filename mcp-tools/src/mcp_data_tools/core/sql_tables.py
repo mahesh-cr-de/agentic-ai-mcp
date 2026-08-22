@@ -15,7 +15,7 @@ Important:
     authoritative check runs after the backend's own dry run reports the
     tables it actually resolved. See
     :meth:`mcp_data_tools.guardrails.engine.GuardrailEngine.preflight_check_sql`
-    and ``docs/SECURITY.md`` for the full two-phase rationale.
+    and ``SECURITY.md`` for the full two-phase rationale.
 """
 
 from __future__ import annotations

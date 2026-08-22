@@ -39,7 +39,7 @@ def build_audit_sink(config: AppConfig) -> AuditSinkPort:
     if kind == AuditSinkKind.BIGQUERY:
         raise ConfigurationError(
             "audit.kind=bigquery is reserved for a future release; "
-            "use local_jsonl or stdout today (see docs/ROADMAP in README)"
+            "use local_jsonl or stdout today (see the Roadmap section in README.md)"
         )
     raise ConfigurationError(f"Unrecognized audit.kind: {kind!r}")  # pragma: no cover
 

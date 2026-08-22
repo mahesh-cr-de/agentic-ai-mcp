@@ -74,5 +74,5 @@ class AuditWriteError(McpDataToolsError):
     Audit failures are treated as operationally significant: by default the
     guardrail engine is configured to fail closed (deny the operation) if
     the audit sink cannot be written to, so this exception is never silently
-    swallowed. See ``docs/SECURITY.md`` for the fail-closed rationale.
+    swallowed. See ``SECURITY.md`` for the fail-closed rationale.
     """

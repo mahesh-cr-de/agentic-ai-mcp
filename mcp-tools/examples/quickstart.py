@@ -96,7 +96,7 @@ def main() -> None:
     print()
 
     # 5. An attempt to query a non-allow-listed table — denied *before* the
-    #    (mock) backend is ever called; see docs/SECURITY.md.
+    #    (mock) backend is ever called; see SECURITY.md.
     try:
         query_tool.execute({"sql": "SELECT * FROM `acme.hr_raw.salaries`"}, actor="demo-agent")
     except GuardrailViolationError as exc:

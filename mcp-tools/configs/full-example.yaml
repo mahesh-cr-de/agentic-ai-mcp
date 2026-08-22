@@ -1,5 +1,5 @@
 # Example configuration exercising every backend and guardrail knob.
-# Secrets are always referenced, never inlined — see docs/SECURITY.md.
+# Secrets are always referenced, never inlined — see SECURITY.md.
 
 server:
   name: mcp-data-tools-prod
