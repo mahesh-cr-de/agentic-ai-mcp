@@ -35,7 +35,7 @@ done. `mcp-data-tools` treats the guardrail layer as the actual product:
   obviously out-of-policy queries *before* any backend call — so an agent
   can't even use a dry run to probe the existence/schema of a
   non-allow-listed table — followed by an authoritative check against the
-  backend's own dry-run result. See [`docs/SECURITY.md`](docs/SECURITY.md).
+  backend's own dry-run result. See [`SECURITY.md`](SECURITY.md).
 - **Real, enforced cost ceilings.** `max_bytes_billed` is passed straight
   through to the backend's execution API, so it holds even if a stale
   estimate undercounts a table that grew in the meantime.
@@ -163,7 +163,7 @@ hand-rolled fake.
 **Does this replace IAM?** No. It's a fast, auditable policy layer in
 front of your backends; the service account/role this server runs as
 should still be scoped to least privilege. See
-[`docs/SECURITY.md`](docs/SECURITY.md) for the full defense-in-depth
+[`SECURITY.md`](SECURITY.md) for the full defense-in-depth
 argument.
 
 **Can it write data?** No tool in this package can execute DDL/DML,
@@ -178,7 +178,7 @@ adapter, not a rewrite. See "Extensibility" in `docs/ARCHITECTURE.md`.
 **Why do dry runs still get preflight-checked if they don't cost anything?**
 Because a dry run against BigQuery still reveals whether a table exists
 and its schema/referenced-table list, which is itself information the
-allow-list is meant to gate. See `docs/SECURITY.md`.
+allow-list is meant to gate. See `SECURITY.md`.
 
 ## Troubleshooting
 
